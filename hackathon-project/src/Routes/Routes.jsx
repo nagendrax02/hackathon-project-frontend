@@ -2,6 +2,7 @@ import { Login } from "../components/Login/Login";
 import { Signup } from "../components/SignUp/Signup";
 import { SignupFill } from "../components/SignUp/SignupFill";
 import { Switch, Route } from "react-router-dom";
+import { MemberFill } from "../components/MemberSignup/Member.jsx";
 
 export default function Routes() {
 
@@ -13,6 +14,9 @@ export default function Routes() {
                 </Route>
                 <Route path="/signup">
                     <Signup />
+                </Route>
+                <Route path="/memberFill">
+                   <MemberFill/>
                 </Route>
                 <Route path="/signupFill">
                     <SignupFill />

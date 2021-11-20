@@ -41,7 +41,7 @@ const Signup = () => {
                 </div>
                 <div className={Styles.signup__single_div  }>
                     <MdEmail style={{ color: "grey" }} />
-                        <Link to="/signupFill" style={{ textDecoration: "none", color: "black" }}><span className={Styles.signup__single_span}>
+                        <Link to="/memberFill" style={{ textDecoration: "none", color: "black" }}><span className={Styles.signup__single_span}>
                         Sign up with email
                         </span></Link>
                 </div>
