@@ -29,7 +29,7 @@ export const NavBar = ()=>{
     return (
         <>
         <Box sx={{display:"flex", justifyContent:"center",gap:"50%"}}>
-        <Link href='/home' underline='none'>     <Box sx={{fontSize:'x-large', padding:"10px", marginRight:'50px'}}>Find Loader</Box></Link>
+        <Link href='/' underline='none'>     <Box sx={{fontSize:'x-large', padding:"10px", marginRight:'50px'}}>Find Loader</Box></Link>
    <Box sx={{ display: 'flex', gap:"20px", alignItems: 'center', textAlign: 'center' }}>
           <Link underline='none' color="inherit" href='/loadmarket'><Typography sx={{ minWidth: 100, fontWeight:'600', color:'gray' }}>Live Load Market</Typography></Link>
          <Link underline='none' color="inherit" href='/lorrymarket'> <Typography sx={{ minWidth: 100 , fontWeight:'600', color:'gray'}}>Live Lorry Market</Typography></Link>
