@@ -1,10 +1,10 @@
 import React from 'react'
 import { LoginForm } from './LoginForm';
 
-const Login = () => {
+const Login = (closeUserLoginModal) => {
     return (
         <div>
-            <LoginForm />
+            <LoginForm closeUserLoginModal={closeUserLoginModal} />
         </div>
     )
 }
