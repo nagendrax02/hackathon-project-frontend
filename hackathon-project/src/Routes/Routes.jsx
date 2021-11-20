@@ -2,7 +2,7 @@ import { Login } from "../components/Login/Login";
 import { Signup } from "../components/SignUp/Signup";
 import { SignupFill } from "../components/SignUp/SignupFill";
 import { Switch, Route } from "react-router-dom";
-import { NavBar } from "../components/NavBar/NavBar";
+import { Homepage } from "../Pages/Homepage";
 
 export default function Routes() {
 
@@ -18,8 +18,8 @@ export default function Routes() {
                 <Route path="/signupFill">
                     <SignupFill />
                 </Route> 
-                <Route path="/navbar">
-                    <NavBar></NavBar>
+                <Route path="/" exact>
+                    <Homepage></Homepage>
                     </Route>         
             </Switch>
         </div>

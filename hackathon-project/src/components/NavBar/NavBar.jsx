@@ -5,141 +5,96 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import  MenuItem  from "@mui/material/MenuItem";
 import  Avatar  from "@mui/material/Avatar";
-import Devider from "@mui/material/Divider"
+import Divider from "@mui/material/Divider"
 import  Link  from "@mui/material/Link";
 import Modal from "@mui/material/Modal"
 import { Login } from "../Login/Login";
+import Tooltip from "@mui/material/Tooltip"
+import { IconButton } from "@mui/material/";
+import { ListItemIcon } from "@mui/material/";
+import {FaUserCircle} from "react-icons/fa"
+import {AiFillSetting} from "react-icons/ai"
+import {FiLogOut} from "react-icons/fi"
+import {GrHistory} from "react-icons/gr"
 
 export const NavBar = ()=>{
-    const [anchorE1, setAnchorE1] = useState(null);
-    const [anchorE2, setAnchorE2] = useState(null);
-    const open = Boolean(anchorE1);
-    const open1= Boolean(anchorE2);
-    const handleClick = (event)=>{
-        setAnchorE1(event.currentTarget)
-    }
-    const handleSignup=(event)=>{
-        setAnchorE2(event.currentTarget);
-    }
-    const handleClose=()=>{
-        setAnchorE1(null);
-        setAnchorE2(null);
-    }
-    
-    const [userLoginModal, setUserLoginModal] = useState(false);
-
-    const handleUserLoginModal=()=>{
-        setUserLoginModal(true)
-    }
-    const closeUserLoginModal=()=>{
-        setUserLoginModal(false);
-    }
-
-    return (<>
-        <Box sx={{display:'flex', justifyContent:'center', alignItems:'center', background:'blue', gap:'12%', padding:'10px'}}>
-            <Box sx={{color:'white', fontSize:'x-large'}}><Link href='/home' underline='hover' color='inherit'> Find Loader</Link></Box>
-            <Box sx={{display:'flex', alignItems:'center', textAlign:'center', justifyContent:'center', gap:'20px', background:'blue', color:'white'}}>
-            <Link href='/transport' color='inherit' underline='hover' sx={{cursor:"pointer", fontSize:'large', fontWeight:'600'}}>Transport Directory</Link>
-            <Link href='/services' color='inherit' underline='hover' sx={{cursor:"pointer", fontWeight:'600',fontSize:'large', marginRight:'500px'}}>Services</Link>
-
-            <Button sx={{background:'rgb(8,18,59)'}} variant="contained" onClick={handleClick}>Login</Button>
-            <Button sx={{background:'rgb(8,18,59)'}} variant="contained" onClick={handleSignup}>Signup</Button>
-            </Box>
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+    return (
+        <>
+        <Box sx={{display:"flex", justifyContent:"center",gap:"50%"}}>
+        <Link href='/home' underline='none'>     <Box sx={{fontSize:'x-large', padding:"10px", marginRight:'50px'}}>Find Loader</Box></Link>
+   <Box sx={{ display: 'flex', gap:"20px", alignItems: 'center', textAlign: 'center' }}>
+          <Link underline='none' color="inherit" href='/loadmarket'><Typography sx={{ minWidth: 100, fontWeight:'600', color:'gray' }}>Live Load Market</Typography></Link>
+         <Link underline='none' color="inherit" href='/lorrymarket'> <Typography sx={{ minWidth: 100 , fontWeight:'600', color:'gray'}}>Live Lorry Market</Typography></Link>
+          <Tooltip title="Account settings">
+            <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
+              <Avatar sx={{ width: 32, height: 32 }}><FaUserCircle /></Avatar>
+            </IconButton>
+          </Tooltip>
         </Box>
-        <Menu 
-            anchorEl={anchorE1}
-            open={open}
-            onClose={handleClose}
-            onClick={handleClose}
-            PaperProps={{
-                elevation:0,
-                sx:{
-                    overflow: 'visible',
-                    filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                    mt:1.5,
-                    '& .MuiAvatar-root':{
-                        width:32,
-                        height:32,
-                        ml:-0.5,
-                        mr:1
-                    },
-                    '&:before':{
-                        content:'""',
-                        display:'block',
-                        position: 'absolute',
-                        top:0,
-                        right:14,
-                        width:10,
-                        height:10,
-                        bgcolor:'background.paper',
-                        transform:'translateY(-50%) rotate(45deg)',
-                        zIndex:0
-                    }
-                }
-            }}
-            transformOrigin={{horizontal:'right', vertical:'top'}}
-            anchorOrigin={{horizontal:'right', vertical:'bottom'}}
+        </Box>
+        <Menu
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          onClick={handleClose}
+          PaperProps={{
+            elevation: 0,
+            sx: {
+              overflow: 'visible',
+              filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+              mt: 1.5,
+              '& .MuiAvatar-root': {
+                width: 32,
+                height: 32,
+                ml: -0.5,
+                mr: 1,
+              },
+              '&:before': {
+                content: '""',
+                display: 'block',
+                position: 'absolute',
+                top: 0,
+                right: 14,
+                width: 10,
+                height: 10,
+                bgcolor: 'background.paper',
+                transform: 'translateY(-50%) rotate(45deg)',
+                zIndex: 0,
+              },
+            },
+          }}
+          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
-
             <MenuItem>
-                <Avatar></Avatar> <Button onClick={handleUserLoginModal} color='inherit'>User Login </Button>
+                <Box sx={{fontWeight:600}}>Nagendra</Box>
             </MenuItem>
-            <Devider/>
-            <MenuItem>
-                <Avatar></Avatar><Button  color='inherit' onClick={handleUserLoginModal}>Driver Login </Button>
-            </MenuItem>
+          <MenuItem>
+            <Avatar /> Profile
+          </MenuItem>
+          <MenuItem>
+          <Avatar sx={{ width: 32, height: 32 }}><GrHistory color="white"/></Avatar>
+         
+            View History
+          </MenuItem>
+          <Divider />
+          
+       
+          <MenuItem>
+            <ListItemIcon>
+          <Avatar sx={{ width: 30, height: 30 }}><FiLogOut /></Avatar>
+              
+            </ListItemIcon>
+            Logout
+          </MenuItem>
         </Menu>
-        {/* menu 2 */}
-        <Menu 
-            anchorE2={anchorE2}
-            open={open1}
-            onClose={handleClose}
-            onClick={handleClose}
-            PaperProps={{
-                elevation:0,
-                sx:{
-                    overflow: 'visible',
-                    filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                    mt:1.5,
-                    '& .MuiAvatar-root':{
-                        width:32,
-                        height:32,
-                        ml:-0.5,
-                        mr:1
-                    },
-                    '&:before':{
-                        content:'""',
-                        display:'block',
-                        position: 'absolute',
-                        top:0,
-                        right:14,
-                        width:10,
-                        height:10,
-                        bgcolor:'background.paper',
-                        transform:'translateY(-50%) rotate(45deg)',
-                        zIndex:0
-                    }
-                }
-            }}
-            transformOrigin={{horizontal:'right', vertical:'top'}}
-            anchorOrigin={{horizontal:'right', vertical:'bottom'}}
-        >
-
-            <MenuItem>
-                <Avatar></Avatar><Button color='inherit'> User Signup</Button>
-            </MenuItem>
-            <Devider/>
-            <MenuItem>
-                <Avatar></Avatar> <Button color='inherit'> Driver Signup</Button>
-            </MenuItem>
-        </Menu>
-        
-        {/* Login modal */}
-        <Modal 
-            open={userLoginModal}
-            onClose={closeUserLoginModal}
-        >
-            <Login></Login>
-        </Modal>
-    </>)
+  </>)
 }
