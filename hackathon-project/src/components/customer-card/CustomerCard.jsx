@@ -5,25 +5,27 @@ import { VscCircleLargeFilled } from "react-icons/vsc";
 import { FaUserAlt } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
-
-
 import CircularProgress from "@mui/material/CircularProgress";
 
-export const CustomerCard = () => {
+export const CustomerCard = ({ value }) => {
   const [data, setData] = useState();
   async function getData() {
     try {
-      const ref = await fetch("http://localhost:2222/user/business_customer");
-      const data = await ref.json();
-      console.log(data);
-      setData(data);
+      if (value) {
+        setData(value);
+      } else {
+        const ref = await fetch("http://localhost:2222/user/business_customer");
+        const data = await ref.json();
+        console.log(data);
+        setData(data);
+      }
     } catch (err) {
       console.log(err.massage);
     }
   }
   useEffect(() => {
     getData();
-  }, []);
+  }, [value]);
   if (!data) {
     return (
       <>
@@ -49,7 +51,9 @@ export const CustomerCard = () => {
           return (
             <Card sx={{ width: "43%", margin: "auto", marginBottom: "30px" }}>
               <Box sx={{ background: "rgb(238,245,254)", padding: "20px" }}>
-                <Box sx={{ fontWeight: "600", marginBottom: "10px" }}>{e.material}</Box>
+                <Box sx={{ fontWeight: "600", marginBottom: "10px" }}>
+                  {e.material}
+                </Box>
                 <Box sx={{ fontSize: "12px" }}>
                   <BsCircleFill size="8"></BsCircleFill>&nbsp; {e.route1}
                 </Box>
@@ -80,7 +84,7 @@ export const CustomerCard = () => {
                 </Box>
                 <Box sx={{ display: "flex", fontSize: "12px" }}>
                   <BsFillSquareFill style={{ marginTop: "4px" }} size="8" />
-                  &nbsp;  {e.route2}
+                  &nbsp; {e.route2}
                 </Box>
                 <Box sx={{ display: "flex", gap: "10px", padding: "15px" }}>
                   <Box sx={{ fontSize: "12px", padding: "5px" }}>
@@ -99,8 +103,12 @@ export const CustomerCard = () => {
               <Box sx={{ padding: "20px", display: "flex", gap: "100px" }}>
                 <Box sx={{ display: "flex", gap: "20px", padding: "10px" }}>
                   {" "}
-                  <FaUserAlt></FaUserAlt>
-                  <Box>Sanman Traders</Box>
+                  {e.book ? (
+                    <img src={"http://localhost:3000/" + e.book.img} alt="pp" />
+                  ) : (
+                    <FaUserAlt></FaUserAlt>
+                  )}
+                  <Box>{e.book ? e.book.name : "Sanman Traders"}</Box>
                 </Box>
                 <Button variant="contained" sx={{ width: "100px" }}>
                   Bid
@@ -109,7 +117,6 @@ export const CustomerCard = () => {
             </Card>
           );
         })}
-
       </Box>
     </>
   );
