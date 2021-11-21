@@ -3,6 +3,7 @@ import { Homepage } from "../Pages/Homepage";
 import { LoginSignup } from "../components/login-signup/LoginSignup";
 import { OTP } from "../components/login-signup/OTP";
 import {UserProfile} from "../Pages/UserProfile";
+import { BidDetails } from "../Pages/BidDetails";
 
 export default function Routes() {
 
@@ -21,7 +22,10 @@ export default function Routes() {
                     <Homepage></Homepage>
                     </Route>
                     <Route path="/userprofile">
-                        <UserProfile></UserProfile></Route>         
+                        <UserProfile></UserProfile></Route> 
+                        <Route path='/bid'>
+                            <BidDetails></BidDetails>
+                            </Route>        
             </Switch>
         </div>
     );
