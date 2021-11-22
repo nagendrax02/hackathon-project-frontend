@@ -8,7 +8,7 @@ import { Switch, Route } from "react-router-dom";
 export default function Routes() {
 
     return (
-        <div>
+        <div >
             <Switch>
             <Route path="/login-signup">
                     <LoginSignup></LoginSignup>

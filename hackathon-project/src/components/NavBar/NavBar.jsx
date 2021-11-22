@@ -8,7 +8,7 @@ import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
 import Link from "@mui/material/Link";
 import Modal from "@mui/material/Modal";
-
+import { useEffect } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import { IconButton } from "@mui/material/";
 import { ListItemIcon } from "@mui/material/";
@@ -18,6 +18,7 @@ import { FiLogOut } from "react-icons/fi";
 import { GrHistory } from "react-icons/gr";
 import ModalUnstyledDemo from "../Login/components/page"
 export const NavBar = () => {
+  const log= localStorage.getItem("phone")
   const [anchorEl, setAnchorEl] = useState(null);
   const [login, setLogin] = useState(false);
   const open = Boolean(anchorEl);
@@ -27,7 +28,9 @@ export const NavBar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+useEffect(()=>{
+  setLogin(log)
+},[log])
 
   return (
     <>
@@ -69,8 +72,10 @@ export const NavBar = () => {
                 <FaUserCircle />
               </Avatar>
             </IconButton>
-          </Tooltip>:<ModalUnstyledDemo value="Login" />}
-          {/* <Button variant="contained">Login</Button> */}
+          </Tooltip>:<Button onClick={()=>{
+            window.location.href="/otp"
+          }} variant="contained">Login</Button>}
+          {/*  */}
         </Box>
       </Box>
       <Menu
@@ -110,7 +115,9 @@ export const NavBar = () => {
         <MenuItem>
           <Box sx={{ fontWeight: 600 }}>Nagendra</Box>
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={()=>{
+          window.location.href="/userprofile"
+        }}>
           <Avatar /> Profile
         </MenuItem>
         <MenuItem>

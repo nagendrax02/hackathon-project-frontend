@@ -15,7 +15,7 @@ function Login() {
     // );
     // window.location.href="https://prajal.vercel.app/"
     axios.post('http://localhost:2222/user/register/', {
-      email:res.profileObj.email
+      email:"res.profileObj.email"
       
     })
     .then(function (response) {

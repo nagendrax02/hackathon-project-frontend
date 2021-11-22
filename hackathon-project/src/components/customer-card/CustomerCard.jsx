@@ -50,7 +50,7 @@ export const CustomerCard = ({ value }) => {
         {data.map((e) => {
           return (
             <Card sx={{ width: "43%", margin: "auto", marginBottom: "30px" }}>
-              <Box sx={{ background: "rgb(238,245,254)", padding: "20px" }}>
+              <Box sx={{ padding: "20px" }}>
                 <Box sx={{ fontWeight: "600", marginBottom: "10px" }}>
                   {e.material}
                 </Box>
@@ -104,7 +104,7 @@ export const CustomerCard = ({ value }) => {
                 <Box sx={{ display: "flex", gap: "20px", padding: "10px" }}>
                   {" "}
                   {e.book ? (
-                    <img src={"http://localhost:3000/" + e.book.img} alt="pp" />
+                    <img src="file:///C:/Users/prajal/Desktop/project/hackathon_backend/src/uploads/1637422923444-129494120-WhatsApp%20Image%202021-11-13%20at%2020.55.21.jpeg" alt="pp" />
                   ) : (
                     <FaUserAlt></FaUserAlt>
                   )}

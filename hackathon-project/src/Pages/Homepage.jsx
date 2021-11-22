@@ -125,7 +125,7 @@ export const Homepage = () => {
                 padding: "10px",
               }}
             >
-              Dehli
+              
             </div>
             {data.map((e) => (
               <>
@@ -181,7 +181,7 @@ export const Homepage = () => {
                   padding: "10px",
                 }}
               >
-                Dehli
+                
               </div>
               {data.map((e) => (
                 <>
